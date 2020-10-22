@@ -15,7 +15,7 @@
         </template>
       </div>
     </div>
-    <div class="pagination">
+    <div class="pagination" v-if="page || (page+1)*10 < getTotalTickers">
       <button 
         v-if="page" 
         @click="showPreviousPage"
