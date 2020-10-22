@@ -11,7 +11,11 @@
       </div>
       <div class="listing__body">
         <template v-for="item in tickers">
-          <ListItem :item="item" :key="item.id"/>
+          <ListItem 
+            :item="item" 
+            :key="item.id"
+            @on-click="showDetails(item.id)"
+          />
         </template>
       </div>
     </div>
@@ -76,6 +80,13 @@ export default {
           ...this.$router.currentRoute.query,
           page: page
         }
+      });
+    },
+    showDetails(id) {
+      console.log('click');
+      this.$router.push({
+        name: 'Details',
+        params: { id },
       });
     }
   }

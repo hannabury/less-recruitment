@@ -9,7 +9,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    tickers: []
+    tickers: [],
+    coin: {},
+    ticker: {}
   },
   getters,
   mutations,

@@ -1,5 +1,8 @@
 <template>
-  <div class="listing__item">
+  <div 
+    class="listing__item"
+    @click="$emit('on-click')"
+  >
     <div class="listing__cell_image"><img src="@/assets/icon.png" alt="Coin logo"></div>
     <div class="listing__cell_name">
       <span class="listing__item_value">{{ item.name }}</span>

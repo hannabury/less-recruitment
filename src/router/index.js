@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Listing from "../views/Listing.vue";
+import Details from "../views/Details.vue";
 
 Vue.use(VueRouter);
 
@@ -14,14 +15,11 @@ const routes = [
     path: "/listing",
     name: "Listing",
     component: Listing,
-    children: [
-      {
-        path: ':id',
-        name: "Detail",
-        component: () =>
-          import(/* webpackChunkName: "about" */ "../views/Detail.vue")
-      }
-    ]
+  },
+  {
+    path: '/listing/:id',
+    name: "Details",
+    component: Details,
   }
 ];
 
