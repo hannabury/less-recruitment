@@ -47,9 +47,10 @@ export default {
   width: 100%;
 
   &__header {
-    margin-bottom: 16px;
+    margin-bottom: 4px;
     display: flex;
     text-align: left;
+    font-size: 12px;
   }
 
   &__cell {
@@ -57,10 +58,10 @@ export default {
       width: 100px;
     }
     &_name {
-      width: calc(50% - 50px);
+      width: calc(100% - 250px);
     }
     &_price {
-      width: calc(50% - 50px);
+      width: 150px;
     }
   }
 }
