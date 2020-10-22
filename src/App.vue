@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="nav">
+    <div class="nav container">
       <router-link to="/" class="nav__logo">
         <img src="@/assets/logo.png" alt="CEX logo">
       </router-link>
@@ -22,7 +22,9 @@
         </li>
       </ul>
     </div>
-    <router-view />
+    <div class="content">
+      <router-view />
+    </div>
   </div>
 </template>
 

@@ -2,5 +2,19 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
+  background-color: $color-grey-light; 
   margin: 0;
+}
+
+.content {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.heading_h1 {
+  font-size: 18px;
 }
