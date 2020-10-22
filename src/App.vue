@@ -1,32 +1,68 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="nav">
+      <router-link to="/" class="nav__logo">
+        <img src="@/assets/logo.png" alt="CEX logo">
+      </router-link>
+      <ul class="nav__links">
+        <li>
+          <router-link to="/listing" class="nav__link">Coins</router-link>
+        </li>
+        <li>
+          <router-link to="/icos" class="nav__link">ICO's</router-link>
+        </li>
+        <li>
+          <router-link to="/markets" class="nav__link">Markets</router-link>
+        </li>
+        <li>
+          <router-link to="/exchanges" class="nav__link">Exchanges</router-link>
+        </li>
+        <li>
+          <router-link to="/wallets" class="nav__link">Wallets</router-link>
+        </li>
+      </ul>
     </div>
     <router-view />
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+@import "@/styles/_variables.scss";
 
-#nav {
-  padding: 30px;
+.nav {
+  background: $color-grey;
+  display: flex;
+  align-items: flex-end;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  &__logo {
+    display: inline-block;
+    margin: 8px;
+    padding: 0;
+  }
 
-    &.router-link-exact-active {
-      color: #42b983;
+  &__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__link {
+    display: inline-block;
+    color: $color-grey-light;
+    text-decoration: none;
+    padding: 16px;
+    border-bottom: 4px solid transparent;
+
+    &:hover {
+      color: $color-brand;
+    }
+
+    &.router-link-active {
+      border-color: $color-grey-light;
     }
   }
+
 }
 </style>
