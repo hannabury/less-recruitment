@@ -9,6 +9,12 @@
     <div class="content">
       <router-view />
     </div>
+    <footer class="nav_footer container">
+      <router-link to="/" class="nav__logo">
+        <img src="@/assets/logo-simple.png" alt="CEX logo" />
+      </router-link>
+      <Nav :links="nav" additionalClass="nav__links_footer"/>
+    </footer>
   </div>
 </template>
 
@@ -43,6 +49,12 @@ export default {
     display: inline-block;
     margin: 8px;
     padding: 0;
+  }
+
+  &_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 </style>

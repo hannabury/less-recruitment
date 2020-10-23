@@ -1,5 +1,5 @@
 <template>
-  <ul class="nav__links">
+  <ul class="nav__links" :class="additionalClass">
     <li v-for="link in links" :key="link.path">
       <router-link :to="link.path" class="nav__link">{{
         link.name
@@ -11,7 +11,7 @@
 <script>
 export default {
   name: "Nav",
-  props: ["links"]
+  props: ["links", "additionalClass"]
 };
 </script>
 
@@ -27,10 +27,20 @@ export default {
     align-items: flex-end;
   }
 
+  &__links_footer {
+    margin-bottom: 16px;
+
+    .nav__link {
+      color: $color-grey;
+      border: none;
+    }
+  }
+
   &__link {
     display: inline-block;
     color: $color-grey-light;
     text-decoration: none;
+    text-transform: uppercase;
     padding: 16px;
     border-bottom: 4px solid transparent;
 
@@ -42,5 +52,7 @@ export default {
       border-color: $color-grey-light;
     }
   }
+
+  
 }
 </style>
