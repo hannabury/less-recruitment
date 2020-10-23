@@ -84,13 +84,13 @@ export default {
       margin-left: auto;
       
       &:after {
-        content: url('../../assets/arrow-pagination.png');
+        content: url('../assets/arrow-pagination.png');
         margin-left: 8px;
       }
     }
 
     &_prev:before {
-      content: url('../../assets/arrow-pagination.png');
+      content: url('../assets/arrow-pagination.png');
       margin-right: 8px;
       transform: rotate(180deg);
     }

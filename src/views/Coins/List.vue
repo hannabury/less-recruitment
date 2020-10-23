@@ -29,9 +29,9 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import Loader from '@/components/common/Loader';
-import Pagination from '@/components/common/Pagination';
-import ListItem from '@/components/Listing/ListItem';
+import Loader from '@/components/Loader';
+import Pagination from '@/components/Pagination';
+import ListItem from '@/components/ListItem';
 
 export default {
   name: "List",

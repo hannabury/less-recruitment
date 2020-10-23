@@ -70,14 +70,14 @@ export default {
     }
 
     &.increase {
-      background: url('../../assets/arrow-increase.png') no-repeat right center;
+      background: url('../assets/arrow-increase.png') no-repeat right center;
       .listing__item_additional {
         color: $color-green;
       }
     }
 
     &.decrease {
-      background: url('../../assets/arrow-decrease.png') no-repeat right center;
+      background: url('../assets/arrow-decrease.png') no-repeat right center;
       .listing__item_additional {
         color: $color-red;
       }
