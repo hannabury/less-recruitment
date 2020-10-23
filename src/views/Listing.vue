@@ -19,33 +19,27 @@
         </template>
       </div>
     </div>
-    <div class="pagination" v-if="page || (page+1)*10 < getTotalTickers">
-      <button 
-        v-if="page" 
-        @click="showPreviousPage"
-        class="pagination__button pagination__button_prev"
-      >Previous page</button>
-      <button
-        v-if="(page+1)*10 < getTotalTickers"
-        @click="showNextPage"
-        class="pagination__button pagination__button_next"
-      >Next page</button>
-    </div>
+    <Pagination 
+      :pageNum="page" 
+      :total="getTotalTickers"
+      @changePage="changePageHandler" 
+    />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import Loader from '@/components/common/Loader';
+import Pagination from '@/components/common/Pagination';
 import ListItem from '@/components/Listing/ListItem';
 
 export default {
   name: "Listing",
-  components: { ListItem, Loader },
+  components: { ListItem, Loader, Pagination },
   data() {
     return {
       page: 0,
-      showLoader: false
+      showLoader: false,
     }
   },
   watch: {
@@ -57,37 +51,23 @@ export default {
     ...mapGetters(['getTickers', 'getTotalTickers']),
     tickers() {
       return this.getTickers(this.page);
-    }
+    },
   },
   async created() {
+    this.page = this.$router.currentRoute.query.page-1 || 0;
     this.showLoader = true;
     await this.$store.dispatch('fetchAllTickers');
     this.showLoader = false;
-    this.page = this.$router.currentRoute.query.page-1 || 0;
   },
   methods: {
-    showNextPage() {
-      this.page++;
-      this.updatePageQuery(this.page+1)
-    },
-    showPreviousPage() {
-      this.updatePageQuery(this.page)
-      this.page--;
-    },
-    updatePageQuery(page) {
-      this.$router.push({
-        query: {
-          ...this.$router.currentRoute.query,
-          page: page
-        }
-      });
-    },
     showDetails(id) {
-      console.log('click');
       this.$router.push({
         name: 'Details',
         params: { id },
       });
+    },
+    changePageHandler(page) {
+      this.page = page;
     }
   }
 };
@@ -119,43 +99,5 @@ export default {
   }
 }
 
-.pagination {
-  display: flex;
-  justify-content: space-between;
-  align-items: right;;
-  
-  &__button {
-    color: white;
-    background-color: $color-brand;
-    background-repeat: no-repeat;
-    border: none;
-    padding: 8px 24px;
-    cursor: pointer;
-
-    &:focus {
-      outline: none;
-    }
-
-    &:before,
-    &:after {
-      display: inline-block;
-    }
-
-    &_next {
-      margin-left: auto;
-      
-      &:after {
-        content: url('../assets/arrow-pagination.png');
-        margin-left: 8px;
-      }
-    }
-
-    &_prev:before {
-      content: url('../assets/arrow-pagination.png');
-      margin-right: 8px;
-      transform: rotate(180deg);
-    }
-  }
-}
 </style>
 

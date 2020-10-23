@@ -4,7 +4,7 @@ import Vue from "vue";
  * fetch all tickers
  */
 export const fetchAllTickers= async ({ commit }) => {
-  const { data: response } = await Vue.http.get("https://api.coinpaprika.com/v1/tickers");
+  const { data: response } = await Vue.http.get(`tickers`);
   commit('setTickers', response);
 };
 
@@ -12,7 +12,7 @@ export const fetchAllTickers= async ({ commit }) => {
  * fetch coin details
  */
 export const fetchCoin= async ({ commit }, coinId) => {
-  const { data: response } = await Vue.http.get(`https://api.coinpaprika.com/v1/coins/${coinId}`);
+  const { data: response } = await Vue.http.get(`coins/${coinId}`);
   commit('setCoin', response);
 };
 
@@ -20,6 +20,6 @@ export const fetchCoin= async ({ commit }, coinId) => {
  * fetch ticker for coin
  */
 export const fetchTickerForCoin= async ({ commit }, coinId ) => {
-  const { data: response } = await Vue.http.get(`https://api.coinpaprika.com/v1/tickers/${coinId}`, { params: { quotes: 'USD,BTC,ETH' }} );
+  const { data: response } = await Vue.http.get(`tickers/${coinId}`, { params: { quotes: 'USD,BTC,ETH' }} );
   commit('setTicker', response);
 };
