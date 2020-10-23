@@ -52,7 +52,5 @@ export default {
       border-color: $color-grey-light;
     }
   }
-
-  
 }
 </style>

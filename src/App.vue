@@ -13,7 +13,7 @@
       <router-link to="/" class="nav__logo">
         <img src="@/assets/logo-simple.png" alt="CEX logo" />
       </router-link>
-      <Nav :links="nav" additionalClass="nav__links_footer"/>
+      <Nav :links="nav" additionalClass="nav__links_footer" />
     </footer>
   </div>
 </template>
