@@ -1,4 +1,3 @@
-
 <template>
   <div class="loader__wrapper">
     <div class="loader"></div>
@@ -7,8 +6,8 @@
 
 <script>
 export default {
-  name: 'Loader'
-}
+  name: "Loader"
+};
 </script>
 
 <style lang="scss" scoped>

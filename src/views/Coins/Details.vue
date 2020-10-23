@@ -56,11 +56,19 @@
       <h2>Coin details</h2>
       <div>
         <ul>
-          <li><span>Started</span><span>{{ coin.started_at }}</span></li>
-          <li><span>Working product</span><span>{{ coin.is_active }}</span></li>
-          <li><span>Org. Structure</span><span>{{ coin.org_structure }}</span></li>
+          <li>
+            <span>Started</span><span>{{ coin.started_at }}</span>
+          </li>
+          <li>
+            <span>Working product</span><span>{{ coin.is_active }}</span>
+          </li>
+          <li>
+            <span>Org. Structure</span><span>{{ coin.org_structure }}</span>
+          </li>
           <li><span>Transactions (24h)</span><span></span></li>
-          <li><span>Proof Type</span><span>{{ coin.proof_type }}</span></li>
+          <li>
+            <span>Proof Type</span><span>{{ coin.proof_type }}</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -71,8 +79,8 @@
 export default {
   data() {
     return {
-      id: '',
-    }
+      id: ""
+    };
   },
   computed: {
     coin() {
@@ -84,13 +92,8 @@ export default {
   },
   async created() {
     this.coinId = this.$router.currentRoute.params.id;
-    await this.$store.dispatch('fetchCoin', this.coinId);
-    await this.$store.dispatch('fetchTickerForCoin', this.coinId);
+    await this.$store.dispatch("fetchCoin", this.coinId);
+    await this.$store.dispatch("fetchTickerForCoin", this.coinId);
   }
-
-}
+};
 </script>
-
-<style lang="scss">
-
-</style>

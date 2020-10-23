@@ -8,4 +8,4 @@ export default {
   setTicker(state, payload = {}) {
     state.ticker = payload;
   }
-}
+};

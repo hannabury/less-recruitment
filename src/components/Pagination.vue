@@ -1,47 +1,51 @@
 <template>
   <div class="pagination" v-if="showPrev || showNext">
-    <button 
-      v-if="showPrev" 
+    <button
+      v-if="showPrev"
       @click="showPreviousPage"
       class="pagination__button pagination__button_prev"
-    >Previous page</button>
+    >
+      Previous page
+    </button>
     <button
       v-if="showNext"
       @click="showNextPage"
       class="pagination__button pagination__button_next"
-    >Next page</button>
+    >
+      Next page
+    </button>
   </div>
 </template>
 
 <script>
-import { ITEMS_PER_PAGE } from '@/constants';
+import { ITEMS_PER_PAGE } from "@/constants";
 
 export default {
-  props: ['pageNum', 'total'],
+  props: ["pageNum", "total"],
   data() {
     return {
       itemsPerPage: ITEMS_PER_PAGE,
-      page: this.pageNum,
-    }
+      page: this.pageNum
+    };
   },
   computed: {
     showPrev() {
       return this.pageNum;
     },
     showNext() {
-      return (this.pageNum+1)*this.itemsPerPage < this.total;
+      return (this.pageNum + 1) * this.itemsPerPage < this.total;
     }
   },
   methods: {
     showNextPage() {
       this.page++;
-      this.updatePageQuery(this.page+1);
-      this.$emit('changePage', this.page);
+      this.updatePageQuery(this.page + 1);
+      this.$emit("changePage", this.page);
     },
     showPreviousPage() {
-      this.updatePageQuery(this.page)
+      this.updatePageQuery(this.page);
       this.page--;
-      this.$emit('changePage', this.page);
+      this.$emit("changePage", this.page);
     },
     updatePageQuery(page) {
       this.$router.push({
@@ -50,9 +54,9 @@ export default {
           page: page
         }
       });
-    },
+    }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -61,8 +65,8 @@ export default {
 .pagination {
   display: flex;
   justify-content: space-between;
-  align-items: right;;
-  
+  align-items: right;
+
   &__button {
     color: white;
     background-color: $color-brand;
@@ -82,15 +86,15 @@ export default {
 
     &_next {
       margin-left: auto;
-      
+
       &:after {
-        content: url('../assets/arrow-pagination.png');
+        content: url("../assets/arrow-pagination.png");
         margin-left: 8px;
       }
     }
 
     &_prev:before {
-      content: url('../assets/arrow-pagination.png');
+      content: url("../assets/arrow-pagination.png");
       margin-right: 8px;
       transform: rotate(180deg);
     }

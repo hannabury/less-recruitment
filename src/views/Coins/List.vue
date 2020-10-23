@@ -11,27 +11,27 @@
       </div>
       <div class="listing__body">
         <template v-for="item in tickers">
-          <ListItem 
-            :item="item" 
+          <ListItem
+            :item="item"
             :key="item.id"
             @on-click="showDetails(item.id)"
           />
         </template>
       </div>
     </div>
-    <Pagination 
-      :pageNum="page" 
+    <Pagination
+      :pageNum="page"
       :total="getTotalTickers"
-      @changePage="changePageHandler" 
+      @changePage="changePageHandler"
     />
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import Loader from '@/components/Loader';
-import Pagination from '@/components/Pagination';
-import ListItem from '@/components/ListItem';
+import { mapGetters } from "vuex";
+import Loader from "@/components/Loader";
+import Pagination from "@/components/Pagination";
+import ListItem from "@/components/ListItem";
 
 export default {
   name: "List",
@@ -39,31 +39,31 @@ export default {
   data() {
     return {
       page: 0,
-      showLoader: false,
-    }
+      showLoader: false
+    };
   },
   watch: {
     $route(to) {
-      this.page = to.query.page-1 || 0;
+      this.page = to.query.page - 1 || 0;
     }
   },
   computed: {
-    ...mapGetters(['getTickers', 'getTotalTickers']),
+    ...mapGetters(["getTickers", "getTotalTickers"]),
     tickers() {
       return this.getTickers(this.page);
-    },
+    }
   },
   async created() {
-    this.page = this.$router.currentRoute.query.page-1 || 0;
+    this.page = this.$router.currentRoute.query.page - 1 || 0;
     this.showLoader = true;
-    await this.$store.dispatch('fetchAllTickers');
+    await this.$store.dispatch("fetchAllTickers");
     this.showLoader = false;
   },
   methods: {
     showDetails(id) {
       this.$router.push({
-        name: 'coinsDetails',
-        params: { id },
+        name: "coinsDetails",
+        params: { id }
       });
     },
     changePageHandler(page) {
@@ -98,6 +98,4 @@ export default {
     }
   }
 }
-
 </style>
-

@@ -9,10 +9,10 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
+    path: "/",
+    name: "home",
     redirect: {
-      name: 'coins'
+      name: "coins"
     }
   },
   {
@@ -20,22 +20,22 @@ const routes = [
     name: "coins",
     component: Coins,
     redirect: {
-      name: 'coinsList',
+      name: "coinsList"
     },
     children: [
       {
-        path: 'list',
-        name: 'coinsList',
-        component: CoinsList,
+        path: "list",
+        name: "coinsList",
+        component: CoinsList
       },
       {
-        path: ':id',
-        name: 'coinsDetails',
-        component: CoinsDetails,
-      },
-    ],
+        path: ":id",
+        name: "coinsDetails",
+        component: CoinsDetails
+      }
+    ]
   },
-  { path: '*', component: Error404 }
+  { path: "*", component: Error404 }
 ];
 
 const router = new VueRouter({
