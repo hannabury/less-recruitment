@@ -34,7 +34,7 @@ import Pagination from '@/components/common/Pagination';
 import ListItem from '@/components/Listing/ListItem';
 
 export default {
-  name: "Listing",
+  name: "List",
   components: { ListItem, Loader, Pagination },
   data() {
     return {
@@ -62,7 +62,7 @@ export default {
   methods: {
     showDetails(id) {
       this.$router.push({
-        name: 'Details',
+        name: 'coinsDetails',
         params: { id },
       });
     },

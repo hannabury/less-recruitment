@@ -6,7 +6,7 @@
       </router-link>
       <ul class="nav__links">
         <li>
-          <router-link to="/listing" class="nav__link">Coins</router-link>
+          <router-link to="/coins" class="nav__link">Coins</router-link>
         </li>
         <li>
           <router-link to="/icos" class="nav__link">ICO's</router-link>
